@@ -26,5 +26,17 @@
             Solving environment: unsuccessful attempt using repodata from current_repodata.json, retrying with next repodata source.
             Collecting package metadata (repodata.json): - Killed
             ```
-1. Follow the video at part "essentials DVC commands".
-    `NOTE`: the dvc should be done before executing git commands.
+1. Follow the [video](personal_copy_data_versioning_dvc) at part "essentials DVC commands".
+    `NOTE`: the dvc add command should be done before executing git commands.
+    1. Go to the project folder, first run `dvc init` even before the data is present once. (i skipped this step ). This is similar to how we run git init before starting the project. SO the sequence should be git init >> dvc init.
+        `NOTE`: it is advisable to use dvc where the git file is present.
+        ```error
+        ERROR: failed to initiate DVC - /home/prabin_nayak/Workspace/side_projects/project-of-the-week/2024-05-22-DVC/Day1 is not tracked by any supported SCM tool (e.g. Git). Use `--no-scm` if you don't want to use any SCM or `--subdir` if initializing inside a subdirectory of a parent SCM repository.
+        ```
+        Other workaround is to use `--subdir`. For more info visit, link[1]
+        For this tutorial let's keep it simple. We will try to put it in root git folder "project of teh week" where the `.git` file is present, in a new folder named "dvc_demo".
+    1. created the src and data folder to use how dvc works.
+
+
+
+[1]: https://dvc.org/doc/command-reference/init#initializing-dvc-in-subdirectories
