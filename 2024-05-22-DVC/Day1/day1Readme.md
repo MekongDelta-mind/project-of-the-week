@@ -36,7 +36,31 @@
         Other workaround is to use `--subdir`. For more info visit, link[1]
         For this tutorial let's keep it simple. We will try to put it in root git folder "project of teh week" where the `.git` file is present, in a new folder named "dvc_demo".
     1. created the src and data folder to use how dvc works.
+    Sequence of commands executed
+    ```shell
+        git init # initiating the git related files
+        dvc init  # initiating the dvc related files
 
+        dvc add data/data.txt # adding the 1st version of the file to "dvc" 
+        git add data/.gitignore data/data.txt.dvc # adding the chnages made in the dvc specfic files to track
+        git add . # adding the files to the git tracking
+        git commit -m "run dvc with data file>>tracking changes with git" # commiting the changes to the git as group
+        git push origin <localBranchName>:<remoteBranchName> # pushing the changes to the git remote
+
+        // Making changes in the data file.
+
+        dvc add data/data.txt # pushing the NEW changes to the dvc tracking file
+        git add data/data.txt.dvc # adding the chnages made in the dvc specfic files to track
+        git commit -m "changing the data file>> dvc add >> git add"  # commiting the changes to the git as group
+
+        git log # to go the previous versions, check th log, press q to get out of the log
+        git checkout ed644ccb8f45924523fe469ad5dac4d1cebce29f ## get the hash and do the checkout, THIS ONLY GETS FILES RELATED TO THAT PARTICULAR COMMIT. And as we are not tracking the data.txt, so we have to do something else to get the data associated with this particular commit
+        dvc checkout # this takes the hash from current data.txt.dvc and collects the data from the cache folder. And finally you see the data related to the hash you were looking for
+
+        git status
+        git push origin <localBranchName>:<remoteBranchName>
+
+    ```
 
 
 [1]: https://dvc.org/doc/command-reference/init#initializing-dvc-in-subdirectories
